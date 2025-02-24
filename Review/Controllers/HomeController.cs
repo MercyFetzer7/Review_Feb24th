@@ -6,16 +6,23 @@ namespace Review.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    private MusicDbContext _musicDbContext;
+    
+    public HomeController(MusicDbContext temp)
     {
-        _logger = logger;
+        _musicDbContext = temp;
     }
-
+    
     public IActionResult Index()
     {
         return View();
+    }
+
+    public IActionResult ArtistList()
+    {
+        var whatevs = _musicDbContext.Artists.ToList();
+        return View(whatevs);
+        
     }
 
     public IActionResult Privacy()

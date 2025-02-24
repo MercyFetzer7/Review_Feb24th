@@ -1,4 +1,4 @@
-@model TModel
+@model List<Artist>
 
 @{
     Layout = null;
@@ -12,7 +12,10 @@
 </head>
 <body>
 <div>
-      
+      @foreach (Artist a in Model)
+      {
+          <p>Artist ID: @a.ArtistId, Artist Name: @a.Name</p>
+      }
 </div>
 </body>
 </html>
